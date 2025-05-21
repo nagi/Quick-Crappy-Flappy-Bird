@@ -2,24 +2,30 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
+const BOOST_VELOCITY = -400.0
+const TERMINAL_VELOCITY = 640
+const ROTATION_ADJUSTMENT_CONSTANT = 0.66 
+ 
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		if velocity.y > TERMINAL_VELOCITY:
+			velocity.y = TERMINAL_VELOCITY
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	# Handle boost.
+	if Input.is_action_pressed("boost"):
+		velocity.y = BOOST_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+	point_beak()
 	move_and_slide()
+
+
+func point_beak():
+	if velocity.y < 160:
+		rotation_degrees = velocity.y / 10
+	elif velocity.y > 400:
+		rotation_degrees = (velocity.y / 10) * ROTATION_ADJUSTMENT_CONSTANT
+	else: 
+		rotation_degrees = 0

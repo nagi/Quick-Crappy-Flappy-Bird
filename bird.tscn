@@ -32,12 +32,13 @@ radius = 11.0
 script = ExtResource("1_cchwj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(17, -12)
+position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_axl6x")
 animation = &"flap"
-frame_progress = 0.622916
+autoplay = "flap"
+frame_progress = 0.145054
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(18, -12)
+position = Vector2(1, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_yr30m")
