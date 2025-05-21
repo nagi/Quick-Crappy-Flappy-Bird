@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 	point_beak()
 	move_and_slide()
 
-
+ 
 func point_beak():
 	if velocity.y < 160:
 		rotation_degrees = velocity.y / 10
