@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
+signal game_over
 
 const SPEED = 300.0
 const BOOST_VELOCITY = -360.0
 const TERMINAL_VELOCITY = 640
 const ROTATION_ADJUSTMENT_CONSTANT = 0.66 
-
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -19,9 +19,11 @@ func _physics_process(delta: float) -> void:
 		velocity.y = BOOST_VELOCITY
 
 	point_beak()
-	move_and_slide()
 
- 
+	var collision_info = move_and_collide(velocity * delta)
+	if collision_info:
+		game_over.emit()
+
 func point_beak():
 	if velocity.y < 160:
 		rotation_degrees = velocity.y / 10

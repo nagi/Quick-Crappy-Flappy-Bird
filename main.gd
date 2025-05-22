@@ -1,11 +1,11 @@
 extends Node
 
 @export var pipe_scene: PackedScene
+var score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	seed("Flappy Bird".hash())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -13,5 +13,13 @@ func _process(_delta: float) -> void:
 
 func _on_pipe_timer_timeout() -> void:
 	var pipe = pipe_scene.instantiate()
-	pipe.make_gap(120)
+	pipe.make_gap(150)
+	pipe.connect("pipe_clear", _on_pipe_clear)
 	add_child(pipe)
+
+func _on_pipe_clear():
+	score += 1
+	$ScorePoint.play()
+
+func _on_bird_game_over() -> void:
+	get_tree().reload_current_scene()
