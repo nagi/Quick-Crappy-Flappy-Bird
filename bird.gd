@@ -2,10 +2,10 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-const BOOST_VELOCITY = -400.0
+const BOOST_VELOCITY = -360.0
 const TERMINAL_VELOCITY = 640
 const ROTATION_ADJUSTMENT_CONSTANT = 0.66 
- 
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

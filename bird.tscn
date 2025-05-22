@@ -29,6 +29,9 @@ animations = [{
 radius = 11.0
 
 [node name="Bird" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 0
+collision_mask = 7
 script = ExtResource("1_cchwj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -36,7 +39,7 @@ position = Vector2(0, 1)
 sprite_frames = SubResource("SpriteFrames_axl6x")
 animation = &"flap"
 autoplay = "flap"
-frame_progress = 0.145054
+frame_progress = 0.189936
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)

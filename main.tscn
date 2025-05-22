@@ -1,12 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2q5c3uraae26"]
+[gd_scene load_steps=5 format=3 uid="uid://d2q5c3uraae26"]
 
+[ext_resource type="Script" uid="uid://cq71i6ein6a7x" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://prcolxxooafi" path="res://bird.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bhgi6jkqocfst" path="res://floor.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://ploalfrfxkg6" path="res://pipe.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_h2yge")
+pipe_scene = ExtResource("3_h2yge")
 
 [node name="Bird" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(24, 123)
 
 [node name="Floor" parent="." instance=ExtResource("2_0xm2m")]
 position = Vector2(0, 426)
+
+[node name="PipeTimer" type="Timer" parent="."]
+wait_time = 0.863
+autostart = true
+
+[connection signal="timeout" from="PipeTimer" to="." method="_on_pipe_timer_timeout"]
