@@ -16,7 +16,7 @@ script = ExtResource("1_h2yge")
 pipe_scene = ExtResource("3_h2yge")
 
 [node name="Bird" parent="." instance=ExtResource("1_ig7tw")]
-position = Vector2(24, 123)
+position = Vector2(123, 160)
 
 [node name="Floor" parent="." instance=ExtResource("2_0xm2m")]
 position = Vector2(0, 426)
@@ -46,8 +46,9 @@ icon = ExtResource("7_4c57u")
 script = ExtResource("7_kek77")
 
 [node name="ColorRect" type="ColorRect" parent="ParallaxBackground"]
-offset_top = 1.0
-offset_right = 639.0
+offset_left = -6.0
+offset_top = -13.0
+offset_right = 644.0
 offset_bottom = 328.0
 color = Color(0.305882, 0.752941, 0.792157, 1)
 
