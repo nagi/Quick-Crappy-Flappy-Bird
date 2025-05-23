@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2q5c3uraae26"]
+[gd_scene load_steps=11 format=3 uid="uid://d2q5c3uraae26"]
 
 [ext_resource type="Script" uid="uid://cq71i6ein6a7x" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://prcolxxooafi" path="res://bird.tscn" id="1_ig7tw"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://ploalfrfxkg6" path="res://pipe.tscn" id="3_h2yge"]
 [ext_resource type="AudioStream" uid="uid://c12ngywnvl4om" path="res://audio/point.ogg" id="5_lquwl"]
 [ext_resource type="AudioStream" uid="uid://cu1ya4p4cdt1o" path="res://audio/hit.ogg" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://b4ciyxxbu44u2" path="res://sprites/message.png" id="7_4c57u"]
+[ext_resource type="Texture2D" uid="uid://bi2olvdaf8u73" path="res://sprites/downtown.png" id="7_5vw27"]
+[ext_resource type="Script" uid="uid://qwhmtlr1n0et" path="res://parallax_background.gd" id="7_kek77"]
+[ext_resource type="Texture2D" uid="uid://dhvtwx7dgme34" path="res://sprites/bush.png" id="8_kek77"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_h2yge")
@@ -32,11 +36,37 @@ stream = ExtResource("6_7mycd")
 process_mode = 2
 
 [node name="Restart" type="Button" parent="CanvasLayer"]
-offset_left = 240.0
-offset_top = 186.0
-offset_right = 424.0
-offset_bottom = 253.0
-text = "Restart"
+offset_left = 235.0
+offset_top = 91.0
+offset_right = 427.0
+offset_bottom = 366.0
+icon = ExtResource("7_4c57u")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("7_kek77")
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground"]
+offset_top = 1.0
+offset_right = 639.0
+offset_bottom = 328.0
+color = Color(0.305882, 0.752941, 0.792157, 1)
+
+[node name="Downtown" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(414, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Downtown"]
+position = Vector2(282, 361)
+texture = ExtResource("7_5vw27")
+
+[node name="Bush" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_offset = Vector2(0, -0.03)
+motion_mirroring = Vector2(548, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Bush"]
+position = Vector2(274, 455)
+texture = ExtResource("8_kek77")
 
 [connection signal="game_over" from="Bird" to="." method="_on_bird_game_over"]
 [connection signal="timeout" from="PipeTimer" to="." method="_on_pipe_timer_timeout"]

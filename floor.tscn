@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhgi6jkqocfst"]
+[gd_scene load_steps=4 format=3 uid="uid://bhgi6jkqocfst"]
 
 [ext_resource type="Script" uid="uid://d0anvra3pksau" path="res://floor.gd" id="1_cgngl"]
 [ext_resource type="Texture2D" uid="uid://tn0com6865uj" path="res://sprites/base.png" id="1_oj3tl"]
-[ext_resource type="Texture2D" uid="uid://bi2olvdaf8u73" path="res://sprites/downtown.png" id="3_qn07e"]
-[ext_resource type="Texture2D" uid="uid://dhvtwx7dgme34" path="res://sprites/bush.png" id="4_dgmes"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cgngl"]
 size = Vector2(336, 33)
@@ -31,26 +29,3 @@ offset = Vector2(168, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(168, 18.5)
 shape = SubResource("RectangleShape2D_cgngl")
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="ParallaxBackground"]
-offset_right = 639.0
-offset_bottom = 327.0
-color = Color(0.305882, 0.752941, 0.792157, 1)
-
-[node name="Downtown" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.1, 0.1)
-motion_mirroring = Vector2(276, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Downtown"]
-position = Vector2(144, 354)
-texture = ExtResource("3_qn07e")
-
-[node name="Bush" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.2, 0.2)
-motion_mirroring = Vector2(274, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Bush"]
-position = Vector2(137, 451)
-texture = ExtResource("4_dgmes")

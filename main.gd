@@ -6,6 +6,7 @@ var score = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	seed("Flappy Bird".hash())
+	$CanvasLayer/Restart.hide()
 	get_tree().paused = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,4 +30,5 @@ func _on_bird_game_over() -> void:
 	$CanvasLayer/Restart.show()
 
 func _on_restart_pressed() -> void:
+	$CanvasLayer/Restart.hide()
 	get_tree().reload_current_scene()
