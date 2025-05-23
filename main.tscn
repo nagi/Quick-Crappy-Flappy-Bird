@@ -25,7 +25,19 @@ autostart = true
 stream = ExtResource("5_lquwl")
 
 [node name="GameOver" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 stream = ExtResource("6_7mycd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 2
+
+[node name="Restart" type="Button" parent="CanvasLayer"]
+offset_left = 240.0
+offset_top = 186.0
+offset_right = 424.0
+offset_bottom = 253.0
+text = "Restart"
 
 [connection signal="game_over" from="Bird" to="." method="_on_bird_game_over"]
 [connection signal="timeout" from="PipeTimer" to="." method="_on_pipe_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/Restart" to="." method="_on_restart_pressed"]

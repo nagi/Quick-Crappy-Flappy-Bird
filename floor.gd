@@ -14,4 +14,3 @@ func _process(delta: float) -> void:
 		tile.position.x -= FLOOR_SPEED * delta
 		if tile.position.x + tile_width < 0:
 			tile.position.x += (tile_width * 3)
- 
